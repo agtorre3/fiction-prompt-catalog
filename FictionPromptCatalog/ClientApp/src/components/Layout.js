@@ -7,11 +7,11 @@ export class Layout extends Component {
 
   render() {
     return (
-      <div>
+      <div class="bg-indigo-950">
         <NavMenu />
-        <Container tag="main">
-          {this.props.children}
-        </Container>
+          <div class="container mx-12 mt-12 mb-12 max-w-fit">
+            {this.props.children}
+          </div>
       </div>
     );
   }

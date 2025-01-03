@@ -6,19 +6,16 @@ export class Home extends Component {
 
   render() {
     return (
-      <body>
-        <main class="container mx-auto mt-28 px-5 flex">
-          <div class="w-full">
-            <div class="flex flex-col gap-5 pb-24">
-              <div class="flex flex-wrap gap-5">
-                <PromptCard/>
-                <PromptCard/>
-                <PromptCard/>
-              </div>
-            </div>
-          </div>
-        </main>
-      </body>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        <PromptCard />
+        <PromptCard />
+        <PromptCard />
+        <PromptCard />
+        <PromptCard />
+        <PromptCard />
+        <PromptCard />
+      </div>
+
     );
   }
 }
