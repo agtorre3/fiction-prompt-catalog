@@ -19,5 +19,6 @@ namespace FictionPromptCatalog.Data
         }
 
         public DbSet<Character> Characters { get; set; }
+        public DbSet<Prompt> Prompts { get; set; }
     }
 }
