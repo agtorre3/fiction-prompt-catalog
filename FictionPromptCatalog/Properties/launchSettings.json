@@ -11,7 +11,7 @@
     "FictionPromptCatalog": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7262;http://localhost:5199",
+      "applicationUrl": "http://localhost:5199",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"

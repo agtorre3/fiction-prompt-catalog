@@ -18,7 +18,13 @@ namespace FictionPromptCatalog.Data
             options.UseNpgsql(Configuration.GetConnectionString("WebApiDatabase"));
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>(entity => { entity.HasIndex(e => e.Email).IsUnique(); });
+        }
+
         public DbSet<Character> Characters { get; set; }
         public DbSet<Prompt> Prompts { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
