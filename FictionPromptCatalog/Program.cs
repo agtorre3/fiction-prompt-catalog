@@ -1,8 +1,18 @@
+using FictionPromptCatalog.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var configuration = builder.Configuration;
+
+builder.Services.AddDbContext<AppDbContext>(opt =>
+    opt.UseNpgsql(configuration.GetConnectionString("WebApiDatabase")));
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
