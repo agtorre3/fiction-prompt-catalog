@@ -1,9 +1,12 @@
 using FictionPromptCatalog.Data;
+using FictionPromptCatalog.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var configuration = builder.Configuration;
+
+builder.Services.AddCors();
 
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseNpgsql(configuration.GetConnectionString("WebApiDatabase")));
@@ -13,6 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<JwtService>();
 
 var app = builder.Build();
 
@@ -26,6 +30,13 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseCors(options => options
+.WithOrigins(new[]{"http://localhost:44441"})
+.AllowAnyHeader()
+.AllowCredentials()
+.AllowAnyMethod()
+);
 
 
 app.MapControllerRoute(
