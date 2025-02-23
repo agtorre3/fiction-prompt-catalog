@@ -32,10 +32,15 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseCors(options => options
-.WithOrigins(new[]{"http://localhost:44441"})
-.AllowAnyHeader()
-.AllowCredentials()
-.AllowAnyMethod()
+    .WithOrigins(new[] {
+        "http://localhost:44441",
+        "https://localhost:44441",
+        "http://localhost:5199",
+        "http://localhost:3000"
+    })
+    .AllowAnyHeader()
+    .AllowCredentials()
+    .AllowAnyMethod()
 );
 
 
