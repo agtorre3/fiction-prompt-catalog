@@ -236,3 +236,13 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# React/Node specific (adding any missing patterns from ClientApp/.gitignore)
+/ClientApp/build/
+/ClientApp/coverage/
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
