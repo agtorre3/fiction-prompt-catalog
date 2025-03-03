@@ -23,7 +23,7 @@ const Login = (props) => {
         const content = await response.json();
 
         setRedirect(true);
-        props.setUsername('name');
+        props.setUsername('');
     }
 
     if (redirect) {

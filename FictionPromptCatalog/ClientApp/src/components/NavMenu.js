@@ -1,31 +1,45 @@
-import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import './NavMenu.css';
-import { Navbar, Nav, Container, Button, OverlayTrigger, Popover, Form } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 
 const NavMenu = (props) => {
   const logout = async () => {
     await fetch('http://localhost:5199/api/logout', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        credentials: 'include',
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
     });
 
-    props.setUsername('Hello');
-}
+    props.setUsername('');
+    window.location.href = '/';
+  }
 
   let menu;
 
-  menu = (
-    <ul className="navbar-nav me-auto mb-2 mb-md-0">
-      <li className="nav-item active">
-        <Link to="/login" className="nav-link">Login</Link>
-      </li>
-      <li className="nav-item active">
-        <Link to="/sign-up" className="nav-link">Sign Up</Link>
-      </li>
-    </ul>
-  )
+  if (props.username === undefined || props.username === '') {
+    menu = (
+      <ul className="navbar-nav me-auto mb-2 mb-md-0">
+        <li className="nav-item active">
+          <Link to="/login" className="nav-link">Login</Link>
+        </li>
+        <li className="nav-item active">
+          <Link to="/sign-up" className="nav-link">Sign Up</Link>
+        </li>
+      </ul>
+    )
+  } else {
+    menu = (
+      <ul className="navbar-nav me-auto mb-2 mb-md-0 flex gap-4 align-items-center">
+        <li className="nav-item active">
+          <span>Hello {props.username}!</span>
+        </li>
+        <li className="nav-item active">
+          <Button variant="dark" onClick={logout}>Logout</Button>
+        </li>
+      </ul>
+    )
+  }
 
   return (
     < header >
