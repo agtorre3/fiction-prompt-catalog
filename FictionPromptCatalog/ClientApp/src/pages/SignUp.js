@@ -14,7 +14,6 @@ const SignUp = () => {
         await fetch('http://localhost:5199/api/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
             body: JSON.stringify({
                 username,
                 email,
@@ -26,7 +25,7 @@ const SignUp = () => {
     }
 
     if (redirect) {
-        return <Navigate to="/" />;
+        return <Navigate to="/login" />;
     }
 
     return (
