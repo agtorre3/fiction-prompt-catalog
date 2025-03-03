@@ -28,13 +28,11 @@ function App() {
     <div className="bg-indigo-950">
       <BrowserRouter>
         <NavMenu username={username} setUsername={setUsername} />
-        <div className="container mx-12 mt-12 mb-12 max-w-fit">
-          <Routes>
+        <Routes>
             <Route path="/" element={<Home username={username} />} />
-            <Route path="/login" element={<Login setUsername={setUsername} username={username} />} />
-            <Route path="/sign-up" element={<SignUp />} />
-          </Routes>
-        </div>
+          <Route path="/login" element={<Login setUsername={setUsername} username={username} />} />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );

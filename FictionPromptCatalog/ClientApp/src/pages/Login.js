@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Card } from 'react-bootstrap';
 
 const Login = (props) => {
     const [email, setEmail] = useState('');
@@ -12,7 +12,7 @@ const Login = (props) => {
 
         const response = await fetch('http://localhost:5199/api/login', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
             body: JSON.stringify({
                 email,
@@ -27,24 +27,41 @@ const Login = (props) => {
     }
 
     if (redirect) {
-        return <Navigate to="/"/>;
+        return <Navigate to="/" />;
     }
 
     return (
-        <Form onSubmit={submit}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" onChange={e => setEmail(e.target.value)} />
-        </Form.Group>
+        <div className="container w-96 mt-5">
+            <Card className="shadow">
+                <Card.Body className="p-5">
+                    <Card.Title className="text-center mb-4">Login</Card.Title>
+                    <Form onSubmit={submit}>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control
+                                type="email"
+                                placeholder="Enter email"
+                                onChange={e => setEmail(e.target.value)}
+                            />
+                        </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
-        </Form.Group>
-        <Button variant="dark" type="submit">
-            Submit
-        </Button>
-    </Form>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                type="password"
+                                placeholder="Password"
+                                onChange={e => setPassword(e.target.value)}
+                            />
+                        </Form.Group>
+                        <div className="d-grid">
+                            <Button variant="dark" type="submit" size="md">
+                                Login
+                            </Button>
+                        </div>
+                    </Form>
+                </Card.Body>
+            </Card>
+        </div>
     );
 };
 

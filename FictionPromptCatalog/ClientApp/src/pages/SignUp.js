@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Card } from 'react-bootstrap';
 
 const SignUp = () => {
     const [username, setUsername] = useState('');
@@ -29,25 +29,34 @@ const SignUp = () => {
     }
 
     return (
-        <Form onSubmit={submit}>
-            <Form.Group className="mb-3" controlId="formBasicUsername">
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="username" placeholder="Enter username" onChange={e => setUsername(e.target.value)} />
-            </Form.Group>
+        <div className="container w-96 mt-5">
+            <Card className="shadow">
+                <Card.Body className="p-5">
+                    <Form onSubmit={submit}>
+                        <Card.Title className="text-center mb-4">Sign Up</Card.Title>
+                        <Form.Group className="mb-3" controlId="formBasicUsername">
+                            <Form.Label>Username</Form.Label>
+                            <Form.Control type="username" placeholder="Enter username" onChange={e => setUsername(e.target.value)} />
+                        </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" onChange={e => setEmail(e.target.value)} />
-            </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Enter email" onChange={e => setEmail(e.target.value)} />
+                        </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
-            </Form.Group>
-            <Button variant="dark" type="submit">
-                Submit
-            </Button>
-        </Form>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
+                        </Form.Group>
+                        <div className="d-grid">
+                            <Button variant="dark" type="submit" size="md">
+                                Submit
+                            </Button>
+                        </div>
+                    </Form>
+                </Card.Body>
+            </Card>
+        </div>
     );
 };
 
